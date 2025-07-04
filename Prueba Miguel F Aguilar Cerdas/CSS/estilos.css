@@ -1,0 +1,501 @@
+/*! Reinicio básico de la página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: sans-serif;
+  }
+  body, .orbita, .planeta, .titulo, .angulo, .llanta {
+    user-select: none;
+  }
+  
+  html{
+    background-color:black;
+  }
+/*!Estilos del header */
+  /*? Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e2f;
+    padding: 0% 10%;
+    color: white;
+    position: relative;
+  }
+  .logo {
+    position: relative;
+    font-size: 3rem;
+    font-weight: bold;
+    font-style: italic;
+    color:red;
+    z-index: 1;
+  }
+  .franja {
+    position: absolute;
+    top: 0%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 15%; /* Ajusta hasta que cubra "SUPER" */
+    height: 90%;
+    background-color: rgba(255, 0, 0, 0.4); /* Rojo con transparencia */
+    z-index: 2; /* Esto hace que esté encima del texto */
+    pointer-events: none; /* Para que no interfiera con clics */
+  }
+  /*? Menú general */
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+  }
+  .menu-left,.menu-right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .menu ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+  .menu a:hover {
+    background-color: #333;
+    border-radius: 5px;
+  }
+  .menu a{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    transition: background 0.3s;
+    font-weight: bolder;
+  }
+  /*? Estilos de los iconos  */
+  .menu a i {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  /*? Boton de reserva  */
+  .reserve-btn {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 10px 20px 10px 25px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+  }
+  .reserve-btn:hover {
+    background-color: #d62839;
+  }
+  .reserve-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .reserve-icon i {
+    color: #e63946;
+    font-size: 12px;
+  }
+  /*? Botón hamburguesa */
+  .hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+/*! Parrafo descriptivo */
+.parrafo {
+    position: absolute;
+    right: 20%;
+    top: 20%;
+    transform: translateY(-50%);
+    width: 300px; /* Puedes ajustar este valor */
+    padding-left: 20px;
+    z-index: 100;
+  }
+  .descripcion {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: right;
+    margin: 0;
+    padding:4% 10% 0% 0%;
+    text-align: left; /* texto alineado a la izquierda dentro del bloque */
+    background-color: rgba(0, 0, 0, 0.05); /* opcional: para visualizar el bloque */
+    color: white;
+  }
+  .destacado {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: white; /* o el color que prefieras */
+    font-weight: bold;
+    text-align: left;
+  }
+  .resaltado {
+    color: red;
+    font-weight: bold;
+  }
+/*! Carrusel */
+.orbita {
+    position: absolute; /* Posición absoluta para ubicar el carrusel manualmente */
+    top: 70%; /* <<< EDITA AQUÍ para mover el carrusel hacia arriba o abajo (50% es el centro vertical) */
+    left: 50%; /* <<< EDITA AQUÍ para centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Centra completamente el carrusel respecto a su punto central */
+    width: 90vw;      /* 90% del viewport ancho */
+    height: 90vw;     /* mantiene proporción cuadrada */
+    max-width: 1000px; /* no exceder 1000px en pantallas grandes */
+    max-height: 1000px;
+    touch-action: none;
+    z-index: 5; /* Asegura que quede por detrás del texto o elementos más importantes */
+  }
+
+  .llanta {
+    position: absolute;
+    /* ==== EDITA AQUÍ el tamaño del SOL ==== */
+    width: 500px;
+    height: 500px;
+    /* ====================================== */
+    background: black; /* Cambiado a negro */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    z-index: 10;
+    box-shadow: none; /* Elimina el halo */
+
+  }
+  .imagen-llanta{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .aro-rojo {
+    position: absolute;
+    border: 2px solid red;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* ==== EDITA AQUÍ el diámetro del ARO ROJO ==== */
+    width: 580px; /* Doble del radiusInterior (290 x 2) */
+    height: 580px;
+    /* ============================================== */
+    z-index: 2; /* Por debajo de los planetas */
+  }
+  .planeta {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 4px;
+    background-color: #222;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .planeta img.icono {
+    width:100%;
+    height: auto;
+    margin-bottom: 4px;
+    pointer-events: none;
+  }
+  .planeta .titulo {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-family: sans-serif;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 6%;
+  }
+  .carta{
+    background:white;
+    width: 160px;    /* Tamaño aumentado */
+    height: 160px;
+    border-radius: 8px; /* bordes redondeados */
+    background-clip: padding-box;
+    position: absolute; /* por seguridad */
+    z-index: 20; /* valor alto para estar al frente */
+
+  }
+  .rojo2{
+    background: red;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    z-index: 15; /* los planetas rojos internos por debajo de colores */
+  }
+/*! Galería */
+.seccion-superpuesta {
+    position: absolute;
+    bottom: -40%; /* <-- Puedes subir o bajar la sección modificando este valor */
+    left: 0;
+    width: 100%;
+    height: 68%; /* Altura que tapa parte del carrusel */
+    background-color: rgba(30, 30, 30); /* Gris oscuro, ajustable */
+    z-index: 5; /* Debe estar debajo del parrafo pero sobre el fondo */
+  }
+  .contenido-superpuesto {
+    display: flex;
+    justify-content: center; /* Centra el conjunto de columnas */
+    align-items: center;
+    height: 100%;
+    gap: 0px; /* <-- Espacio entre las columnas */
+    padding: 10px 10px; /* <-- Margen interno desde los lados */
+    box-sizing: border-box;
+    color: white;
+  }
+  .columna {
+    width: 100%; /* En lugar de 35%, para que ocupe todo en móviles */
+    max-width: 35%; /* Limitar máximo en pantallas grandes */
+}
+  .columna h2 {
+    margin-bottom:1px;
+    font-size: 1.8rem;
+    width:100%;
+  }
+  .columna p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .btn-superpuesto {
+    background-color: #e63946;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .columna.derecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .imagen-columna {
+    width: 100%;
+    height: 100%;
+  }
+    /* Subcolumnas dentro de la columna izquierda */
+    .subcolumnas {
+    display: flex;
+    gap: 0px; /* Espacio entre las dos imágenes */
+    margin-top: 10px;
+  }
+  
+  /* Cada columna */
+  .subcolumna {
+    flex: 1;
+  }
+  /* Imágenes de las subcolumnas */
+  .img-subcolumna {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Sombra ligera */
+  }
+  
+/*! Media Queries */
+  @media(max-width:2561px){
+    .parrafo{
+      width:382px;
+    }
+    .orbita{
+      top: 41%;
+    }
+    .seccion-superpuesta {
+      bottom: -11%;
+    }
+  }
+  @media(max-width:1504px){
+    .parrafo {
+      right: 1%;
+      top: 22%;
+      padding: 0%;
+    }
+    .orbita {
+      top: 70%;
+    }
+    .seccion-superpuesta {
+      bottom: -22%;
+      height: 52%;
+    }
+  }
+    @media(max-width:1441px){
+    .parrafo{
+      right:8%;
+      top: 12%;
+    }
+    .orbita{
+      top: 41%;
+    }
+    .seccion-superpuesta {
+      bottom: 19%;
+      height: 38%;
+    }
+  }
+  @media(max-width:1350px){
+    .orbita {
+      top: 72%;
+    }
+    .parrafo, .descripcion{
+      padding: 0%;
+    }
+    .parrafo{
+      right: 1%;
+      top: 22%;
+    }
+    .seccion-superpuesta {
+      bottom: -41%;
+      height: 70%;
+    }
+    .contenido-superpuesto {
+      height: 78%; 
+    }
+  }
+@media (max-width: 1025px) {
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1e1e2f;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+  }
+  .menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .hamburguesa {
+    display: block;
+  }
+  .menu.activo {
+    display: flex;
+    z-index: 9999; /* Asegura que el menú esté al frente */
+  }
+  .menu-left, .menu-right {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  /* Párrafo */
+  .parrafo {
+    top: 12%;
+    right: 9%;
+    width: 240px;
+  }
+  .orbita {
+    top: 32%; /* <--- Ajusta este valor para mover todo el grupo */
+  }
+  .seccion-superpuesta {
+    bottom: 26%;
+    height: 42%;
+  }
+}
+@media (max-width:1000px) {
+    .carta {
+      width: 120px;
+      height: 120px;
+    }
+    .llanta {
+      width: 40%;
+      height: 40%;
+    }
+    .aro-rojo {
+      width: 50%;
+      height: 50%;
+    }
+  }
+  @media(max-width:880px){
+    .columna {
+      max-width: 45%;
+    }
+  }
+  @media (max-width: 780px) {
+    .parrafo {
+      top: 12%;
+      right: 6%;
+      width: 156px;
+    }
+    .descripcion{
+      font-size:1rem;
+    }
+    .orbita {
+      top: 27%;
+    }
+    .seccion-superpuesta {
+      bottom: 31%;
+      height: 42%;
+    }
+    .columna {
+      max-width: 51%;
+      margin-bottom: 9px;
+    }
+  }
+  @media(max-width:426px){
+    .parrafo {
+      top: 15%;
+      right: 4%;
+      width: 90px;
+    }
+    .descripcion {
+      font-size: .8rem;
+    }
+    .orbita {
+      top: 22%;
+    }
+    .carta {
+      width: 80px;
+      height: 90px;
+    }
+    .seccion-superpuesta {
+      bottom: 52%;
+      height: 26%;
+    }
+    .contenido-superpuesto {
+      height: 61%;
+    }
+  }

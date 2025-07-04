@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/estilos.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>PruebaTécnica</title>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="navbar">
+        <span class="franja"></span>
+        <div class="logo">SUPER QUADS</div>
+        <nav class="menu" id="menu">
+            <ul class="menu-left">
+                <li><a href="#">Tour</a></li>
+                <li><a href="#">Galería de Aventuras</a></li>
+                <li><a href="#">Acerca de</a></li>
+            </ul>
+            <ul class="menu-right">
+                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li>
+                    <button class="reserve-btn" type="submit">Reservar
+                        <span class="reserve-icon"><i class="fas fa-arrow-right"></i></span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <button class="hamburguesa" id="hamburguesa">☰</button>
+    </header>
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección descriptiva -->
+        <section class="parrafo">
+            <p class="descripcion">
+                Recorrido dentro de<br>
+                nuestro bosque<br>
+                privado<br>
+                <span class="destacado"></span>
+                <span class="resaltado">SUPER QUADS</span>
+            </p>
+        </section>
+        <!-- Sección carrusel -->
+        <section class="orbita" id="orbita">
+            <div class="llanta" id="llanta">
+                <img src="/MEDIA/imgs/Llanta.png" alt="Imagen de una llanta" class="imagen-llanta">
+            </div>
+            <div class="aro-rojo"></div>
+
+            <!-- Planetas grandes -->
+            <article class="planeta carta" id="p1">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Bosque Privado" class="icono" />
+                <div class="titulo">Bosque Privado</div>
+            </article>
+            <article class="planeta carta" id="p2">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Grupos Reducidos" class="icono" />
+                <div class="titulo">Grupos Reducidos</div>
+            </article>
+            <article class="planeta carta" id="p3">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Experiencia Exclusiva" class="icono" />
+                <div class="titulo">Experiencia Exclusiva</div>
+            </article>
+            <article class="planeta carta" id="p4">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Prioridad: Seguridad" class="icono" />
+                <div class="titulo">Prioridad: Seguridad</div>
+            </article>
+            <article class="planeta carta" id="p5">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Visitas Únicas" class="icono" />
+                <div class="titulo">Visitas Únicas</div>
+            </article>
+            <article class="planeta carta" id="p6">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Naturaleza Viva" class="icono" />
+                <div class="titulo">Naturaleza Viva</div>
+            </article>
+            <article class="planeta carta" id="p7">
+                <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Piscina Termal" class="icono" />
+                <div class="titulo">Piscina Termal</div>
+            </article>
+
+            <!-- Planetas interiores rojos -->
+            <div class="planeta rojo2" id="i1"></div>
+            <div class="planeta rojo2" id="i2"></div>
+            <div class="planeta rojo2" id="i3"></div>
+            <div class="planeta rojo2" id="i4"></div>
+            <div class="planeta rojo2" id="i5"></div>
+            <div class="planeta rojo2" id="i6"></div>
+            <div class="planeta rojo2" id="i7"></div>
+        </section>
+        <!-- Sección de galería -->
+        <section class="seccion-superpuesta">
+            <div class="contenido-superpuesto">
+                <div class="columna izquierda">
+                    <h2>GALERÍA DE AVENTURAS</h2>
+                    <button class="reserve-btn" type="submit">Ver galería
+                        <span class="reserve-icon"><i class="fas fa-arrow-right"></i></span>
+                    </button>
+                    <div class="subcolumnas">
+                        <div class="subcolumna">
+                            <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Bosque Privado" class="img-subcolumna" />
+                        </div>
+                        <div class="subcolumna">
+                            <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Bosque Privado" class="img-subcolumna" />
+                        </div>
+                    </div>
+                </div>
+                <div class="columna derecha">
+                    <img src="/MEDIA/imgs/Personas en Cuadracilos.jpg" alt="Bosque Privado" class="imagen-columna" />
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Scripts -->
+    <script src="/JS/script.js"></script>
+</body>
+</html>
